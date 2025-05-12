@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Авторизация и смена пароля</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <!-- Шаг 1: Форма авторизации -->
+  <div id="auth-step" class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-sm">
+    <h2 class="text-gray-900 text-2xl font-bold mb-6 text-center">Вход</h2>
+    
+    <form id="login-form" method="POST" onsubmit="handleLogin(event)">
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm mb-1" for="username">Корпоративная почта</label>
+        <input type="text" id="username" name="username" required
+               class="w-full p-2 rounded bg-gray-50 text-gray-900 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+      </div>
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm mb-1" for="password">Пароль</label>
+        <input type="password" id="password" name="password" required
+               class="w-full p-2 rounded bg-gray-50 text-gray-900 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+      </div>
+      <button type="submit"
+              class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded transition">
+        Войти
+      </button>
+    </form>
+  </div>
+
+  <!-- Шаг 2: Уведомление о необходимости смены пароля -->
+  <div id="password-expired-step" class="hidden bg-white p-8 rounded-2xl shadow-xl w-full max-w-sm">
+    <h2 class="text-gray-900 text-2xl font-bold mb-6 text-center">Ваш пароль устарел</h2>
+    <p class="text-gray-700 text-sm mb-4">
+      Ваш пароль устарел и требует обновления. Пожалуйста, выберите новый пароль для продолжения.
+    </p>
+    <form id="change-password-form" method="POST" onsubmit="handleChangePassword(event)">
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm mb-1" for="new-password">Новый пароль</label>
+        <input type="password" id="new-password" name="new-password" required
+               class="w-full p-2 rounded bg-gray-50 text-gray-900 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+      </div>
+
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm mb-1" for="confirm-password">Подтвердите новый пароль</label>
+        <input type="password" id="confirm-password" name="confirm-password" required
+               class="w-full p-2 rounded bg-gray-50 text-gray-900 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+      </div>
+
+      <button type="submit"
+              class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded transition">
+        Сменить пароль
+      </button>
+    </form>
+  </div>
+
+  <!-- Шаг 3: Подтверждение успешной смены пароля -->
+  <div id="success-step" class="hidden bg-white p-8 rounded-2xl shadow-xl w-full max-w-sm">
+    <h2 class="text-gray-900 text-2xl font-bold mb-6 text-center">Ваш пароль успешно изменён</h2>
+    <p class="text-gray-700 text-sm">
+      Ваш пароль был успешно обновлён. Пожалуйста, используйте новый пароль для входа в систему.
+    </p>
+  </div>
+
+  <script>
+    // Функция обработки логина
+    function handleLogin(event) {
+      event.preventDefault();
+      // Переход к следующему шагу
+      document.getElementById('auth-step').classList.add('hidden');
+      document.getElementById('password-expired-step').classList.remove('hidden');
+    }
+
+    // Функция обработки смены пароля
+    function handleChangePassword(event) {
+      event.preventDefault();
+      // Переход к следующему шагу
+      document.getElementById('password-expired-step').classList.add('hidden');
+      document.getElementById('success-step').classList.remove('hidden');
+    }
+  </script>
+
+</body>
+</html>

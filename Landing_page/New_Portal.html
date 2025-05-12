@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Вход — КОМПАНИЯ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* По умолчанию ширина логотипа */
+      --logo-width: 270px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f2f4f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .login-box {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      padding: 32px 24px;
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+    }
+    .login-box__logo {
+      width: var(--logo-width);
+      height: auto;
+      margin: 0 auto 24px;
+      display: block;
+    }
+    .login-box__title {
+      margin-bottom: 24px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #5a5a5a;
+    }
+    .login-box__form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .login-box__form input {
+      height: 44px;
+      padding: 0 12px;
+      background: #fbfbfb;
+      color: #333;
+      border: 1px solid #d1d5da;
+      border-radius: 6px;
+      font-size: 15px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .login-box__form input::placeholder {
+      color: #999;
+    }
+    .login-box__form input:focus {
+      border-color: #c48b4b;
+      box-shadow: 0 0 0 2px rgba(196,139,75,0.2);
+    }
+    .login-box__form button {
+      height: 44px;
+      border: none;
+      border-radius: 6px;
+      background-color: #c48b4b;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color .2s;
+    }
+    .login-box__form button:hover {
+      background-color: #b07a3f;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box">
+    <!-- Логотип; его размер контролируется переменной --logo-width -->
+    <img src="URL" alt="LOGO" class="login-box__logo" />
+    <div class="login-box__title">Вход в корпоративный портал</div>
+    <form class="login-box__form" action="/login" method="POST">
+      <input type="text" name="username" placeholder="Имя пользователя" required>
+      <input type="password" name="password" placeholder="Пароль" required>
+      <button type="submit">Войти</button>
+    </form>
+  </div>
+
+</body>
+</html>
